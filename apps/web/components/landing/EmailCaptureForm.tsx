@@ -88,7 +88,7 @@ export function EmailCaptureForm() {
             Limited Spots Available
           </div>
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Join the <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Allowlist</span>
+            Signup for <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Early Access</span>
           </h2>
           <p className="mt-4 text-lg text-gray-400">
             Be among the first crypto KOLs to go global with AI dubbing.
