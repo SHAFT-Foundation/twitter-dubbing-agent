@@ -322,6 +322,167 @@ GET /jobs/:jobId
 - **Session Management**: JWT with refresh tokens
 - **User Metadata**: Store in Supabase
 
+## API Integration Implementation Examples
+
+### Twitter Media Download Process
+Based on reference implementation in `exampleONLY/speechlab-twitter-spaces-translator/`:
+
+#### 1. Downloading Twitter Space Audio (M3U8 Streams)
+```javascript
+// Using ffmpeg to download M3U8 streams
+const ffmpegArgs = [
+    '-protocol_whitelist', 'file,http,https,tcp,tls,crypto',
+    '-i', m3u8Url,
+    '-c', 'copy', 
+    '-bsf:a', 'aac_adtstoasc',
+    '-y',
+    outputFilePath
+];
+
+// Execute with progress tracking
+spawn('ffmpeg', ffmpegArgs);
+```
+
+#### 2. Upload to S3 for Public Access
+```javascript
+// Upload downloaded audio to S3
+const uploadParams = {
+    Bucket: AWS_S3_BUCKET,
+    Key: `twitter-space-audio/${filename}`,
+    Body: fileBuffer,
+    ContentType: 'audio/aac'
+};
+
+// Returns public URL like:
+// https://bucket.s3.region.amazonaws.com/twitter-space-audio/file.aac
+```
+
+### SpeechLab API Integration
+
+#### 1. Authentication
+```javascript
+// Login to get JWT token
+POST https://translate-api.speechlab.ai/v1/auth/login
+{
+    "email": "your-email",
+    "password": "your-password"
+}
+
+// Response contains JWT token
+response.data.tokens.accessToken.jwtToken
+```
+
+#### 2. Create Dubbing Project
+```javascript
+// Create project and start dubbing
+POST https://translate-api.speechlab.ai/v1/projects/createProjectAndDub
+Headers: { 'Authorization': `Bearer ${token}` }
+{
+    "name": "Space Name - Target Language",
+    "sourceLanguage": "en",
+    "targetLanguage": "es_la", // Map 'es' to 'es_la' for API
+    "dubAccent": "es_la",
+    "unitType": "whiteGlove",
+    "mediaFileURI": "https://s3-public-url.aac",
+    "voiceMatchingMode": "source",
+    "thirdPartyID": "unique-identifier"
+}
+
+// Returns projectId for tracking
+```
+
+#### 3. Check Project Status
+```javascript
+// Poll for completion using thirdPartyID
+GET https://translate-api.speechlab.ai/v1/projects
+    ?thirdPartyIDs=${thirdPartyID}
+    &expand=true
+
+// Status values: PROCESSING, COMPLETE, FAILED
+// Poll every 30 seconds until COMPLETE
+```
+
+#### 4. Get Dubbed Media URLs
+```javascript
+// Once COMPLETE, extract dubbed media URLs from response
+project.translations[0].dub[0].medias
+// Each media object contains:
+{
+    "uri": "dubbed-file-url",
+    "presignedURL": "temporary-download-url",
+    "format": "mp3",
+    "operationType": "OUTPUT"
+}
+```
+
+### Complete Dubbing Pipeline Flow
+
+1. **Extract Media URL from Twitter**
+   - Get M3U8 playlist URL from Twitter Space/Video
+   - Parse manifest for audio stream
+
+2. **Download & Upload**
+   - Download with ffmpeg to local temp file
+   - Upload to S3 for public access
+   - Clean up temp file
+
+3. **Submit to SpeechLab**
+   - Authenticate and get JWT token
+   - Create dubbing project with S3 URL
+   - Store thirdPartyID for tracking
+
+4. **Monitor Progress**
+   - Poll project status every 30 seconds
+   - Typical completion: 5-30 minutes
+   - Handle FAILED status gracefully
+
+5. **Retrieve Dubbed Content**
+   - Extract presigned URLs from completed project
+   - Download dubbed audio files
+   - Post back to Twitter as replies
+
+### Important Implementation Notes
+
+#### Language Code Mapping
+- Twitter uses standard ISO codes (e.g., 'es')
+- SpeechLab may require specific variants (e.g., 'es_la' for Latin American Spanish)
+- Implement mapping layer for compatibility
+
+#### Error Handling
+- Implement retry logic with exponential backoff
+- Handle 401 errors by refreshing auth token
+- Log all API responses for debugging
+
+#### Rate Limiting
+- SpeechLab: No explicit limits documented, use reasonable polling intervals
+- Twitter API: Respect rate limits, implement backoff
+- S3: Use multipart upload for large files
+
+#### Security
+- Never store Twitter passwords - use OAuth only
+- Encrypt all tokens at rest in database
+- Use presigned URLs for temporary access
+- Implement request signing for webhooks
+
+### Webhook Integration
+
+#### SpeechLab Webhooks (if available)
+```javascript
+POST /api/webhooks/speechlab
+// Verify signature
+// Update job status in database
+// Trigger next steps in pipeline
+```
+
+#### Process Completion Handling
+```javascript
+// On dubbing completion:
+1. Update database with dubbed URLs
+2. Queue for Twitter posting
+3. Send notification to user
+4. Update usage metrics
+```
+
 ## Environment Variables
 
 ```bash
