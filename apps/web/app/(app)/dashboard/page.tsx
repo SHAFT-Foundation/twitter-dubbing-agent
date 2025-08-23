@@ -1,7 +1,7 @@
 "use client"
 
 import { useAuth } from '@/hooks/useAuth'
-import { Globe, Video, Languages, TrendingUp, Twitter, Settings, CreditCard, Sparkles } from 'lucide-react'
+import { Globe, Video, Languages, TrendingUp, Twitter, CreditCard, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 
 export default function DashboardPage() {

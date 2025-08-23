@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import { Twitter, Globe, Video, Zap, Check, AlertCircle } from 'lucide-react'
+import { Twitter, Globe, Video, Zap, AlertCircle } from 'lucide-react'
 import { ConnectTwitter } from '@/components/settings/ConnectTwitter'
 import { LanguageSelector } from '@/components/settings/LanguageSelector'
 import { ContentTypeSelector } from '@/components/settings/ContentTypeSelector'

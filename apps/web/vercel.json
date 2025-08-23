@@ -6,5 +6,43 @@
   "regions": ["iad1"],
   "env": {
     "NEXT_PUBLIC_APP_NAME": "X Dub"
-  }
+  },
+  "functions": {
+    "app/api/agent/scan/route.ts": {
+      "maxDuration": 60
+    },
+    "app/api/agent/process/route.ts": {
+      "maxDuration": 60
+    },
+    "app/api/agent/poll/route.ts": {
+      "maxDuration": 60
+    },
+    "app/api/agent/publish/route.ts": {
+      "maxDuration": 60
+    },
+    "app/api/dubs/submit/route.ts": {
+      "maxDuration": 30
+    },
+    "app/api/connect/x/callback/route.ts": {
+      "maxDuration": 30
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/agent/scan",
+      "schedule": "*/10 * * * *"
+    },
+    {
+      "path": "/api/agent/process",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/agent/poll",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/agent/publish",
+      "schedule": "*/15 * * * *"
+    }
+  ]
 }

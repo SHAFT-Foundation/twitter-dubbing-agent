@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import { Twitter, Check, X, ExternalLink } from 'lucide-react'
+import { Twitter, Check, ExternalLink } from 'lucide-react'
 
 interface ConnectTwitterProps {
   onChange: () => void

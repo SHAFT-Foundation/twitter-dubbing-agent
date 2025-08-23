@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import { MessageCircle, Plus, Pause, Zap, Shield, Lock } from 'lucide-react'
+import { MessageCircle, Plus, Zap, Shield, Lock } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const publishModes = [

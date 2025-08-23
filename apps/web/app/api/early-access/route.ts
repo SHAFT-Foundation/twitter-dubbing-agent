@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 
@@ -32,7 +33,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Insert new email
-    const { data, error } = await supabase
+    const { data, error } = await (supabase as any)
       .from('early_access')
       .insert({
         email,

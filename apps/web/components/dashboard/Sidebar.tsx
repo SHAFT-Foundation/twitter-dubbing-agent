@@ -8,9 +8,9 @@ import { useAuth } from '@/hooks/useAuth'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: Home },
+  { name: 'Dubs', href: '/dashboard/dubs', icon: Video },
   { name: 'Settings', href: '/dashboard/settings', icon: Settings },
   { name: 'Billing', href: '/dashboard/billing', icon: CreditCard },
-  { name: 'Dub History', href: '/dashboard/history', icon: Video },
   { name: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
 ]
 
