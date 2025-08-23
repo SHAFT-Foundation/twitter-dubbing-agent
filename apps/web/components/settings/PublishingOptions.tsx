@@ -1,33 +1,37 @@
 "use client"
 
 import { useState } from 'react'
-import { MessageCircle, Plus, Pause, Zap } from 'lucide-react'
+import { MessageCircle, Plus, Pause, Zap, Shield, Lock } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const publishModes = [
   {
     id: 'auto-reply',
     label: 'Auto-Reply',
-    description: 'Automatically reply to original post with dubbed versions',
+    description: 'Automatically reply to original post with dubbed versions (only replies, never new posts)',
     icon: MessageCircle,
     recommended: true,
-    example: '↳ 🇯🇵 Japanese version: [video link]'
+    example: '↳ 🇯🇵 Japanese version: [video link]',
+    security: 'Can only reply to your existing content'
   },
   {
     id: 'new-post',
-    label: 'New Post',
-    description: 'Create separate posts for each dubbed version',
+    label: 'New Post (Disabled)',
+    description: 'For security, we do not create new standalone posts',
     icon: Plus,
     recommended: false,
-    example: 'NEW POST: [Dubbed video] via @originaluser'
+    disabled: true,
+    example: 'Feature disabled for account security',
+    security: 'Not available - protects your account'
   },
   {
     id: 'manual',
-    label: 'Manual Review',
-    description: 'Review and approve each dub before publishing',
-    icon: Pause,
-    recommended: false,
-    example: 'Dubs ready for your review in dashboard'
+    label: 'Manual Review (Most Secure)',
+    description: 'YOU control everything - review and approve each dub before publishing',
+    icon: Shield,
+    recommended: 'security',
+    example: 'Dubs wait for your personal approval',
+    security: 'Complete control - nothing posts without your click'
   },
 ]
 
@@ -58,10 +62,13 @@ export function PublishingOptions({ onChange }: PublishingOptionsProps) {
           return (
             <button
               key={mode.id}
-              onClick={() => handleModeChange(mode.id)}
+              onClick={() => !mode.disabled && handleModeChange(mode.id)}
+              disabled={mode.disabled}
               className={cn(
                 "w-full flex items-start gap-4 p-4 rounded-lg border transition-all text-left",
-                isSelected
+                mode.disabled
+                  ? "bg-gray-900/30 border-gray-800 opacity-50 cursor-not-allowed"
+                  : isSelected
                   ? "bg-purple-500/20 border-purple-500/50"
                   : "bg-gray-900/50 border-gray-800 hover:border-gray-700"
               )}
@@ -86,9 +93,15 @@ export function PublishingOptions({ onChange }: PublishingOptionsProps) {
                   )}>
                     {mode.label}
                   </p>
-                  {mode.recommended && (
+                  {mode.recommended === true && (
                     <span className="text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">
                       Recommended
+                    </span>
+                  )}
+                  {mode.recommended === 'security' && (
+                    <span className="text-xs bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded-full flex items-center gap-1">
+                      <Lock className="w-3 h-3" />
+                      Most Secure
                     </span>
                   )}
                 </div>
@@ -99,9 +112,19 @@ export function PublishingOptions({ onChange }: PublishingOptionsProps) {
                   {mode.description}
                 </p>
                 {isSelected && (
-                  <div className="mt-2 p-2 rounded bg-gray-800/50">
-                    <p className="text-xs text-gray-400">Example:</p>
-                    <p className="text-xs text-purple-400 mt-1 font-mono">{mode.example}</p>
+                  <div className="mt-2 space-y-2">
+                    <div className="p-2 rounded bg-gray-800/50">
+                      <p className="text-xs text-gray-400">Example:</p>
+                      <p className="text-xs text-purple-400 mt-1 font-mono">{mode.example}</p>
+                    </div>
+                    {mode.security && (
+                      <div className="p-2 rounded bg-blue-500/10 border border-blue-500/30">
+                        <p className="text-xs text-blue-400 flex items-center gap-1">
+                          <Shield className="w-3 h-3" />
+                          {mode.security}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -148,10 +171,17 @@ export function PublishingOptions({ onChange }: PublishingOptionsProps) {
       )}
 
       {/* Info box */}
-      <div className="p-3 rounded-lg bg-blue-500/10 border border-blue-500/30">
-        <p className="text-sm text-blue-400">
-          <strong>Pro tip:</strong> Start with Auto-Reply mode to maximize engagement. Your dubbed content will appear directly in the conversation thread.
-        </p>
+      <div className="space-y-3">
+        <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/30">
+          <p className="text-sm text-green-400">
+            <strong>🔒 Security First:</strong> X Dub can only reply to your existing content. We cannot create new standalone posts. Choose Manual Review for complete control over what gets published.
+          </p>
+        </div>
+        <div className="p-3 rounded-lg bg-blue-500/10 border border-blue-500/30">
+          <p className="text-sm text-blue-400">
+            <strong>AI Monitoring:</strong> Our security AI agent monitors all platform activity 24/7 to ensure your account remains safe and secure.
+          </p>
+        </div>
       </div>
     </div>
   )

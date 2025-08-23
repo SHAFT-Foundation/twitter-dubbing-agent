@@ -57,7 +57,7 @@ const stats = [
 
 export function BenefitsSection() {
   return (
-    <section className="bg-black py-16 sm:py-24">
+    <section className="bg-black py-16 sm:py-24" id="features">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-4 py-2 text-sm font-medium text-purple-400 ring-1 ring-purple-500/20 mb-4">

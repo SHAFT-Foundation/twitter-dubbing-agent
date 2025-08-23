@@ -5,6 +5,8 @@ import { HeroSection } from "@/components/landing/HeroSection"
 import { HowItWorks } from "@/components/landing/HowItWorks"
 import { ScreenshotsSection } from "@/components/landing/ScreenshotsSection"
 import { BenefitsSection } from "@/components/landing/BenefitsSection"
+import { SecuritySection } from "@/components/landing/SecuritySection"
+import { PricingSection } from "@/components/landing/PricingSection"
 import { EmailCaptureForm } from "@/components/landing/EmailCaptureForm"
 import { Footer } from "@/components/landing/Footer"
 
@@ -21,8 +23,10 @@ export default function Home() {
       <Header />
       <HeroSection onGetStarted={scrollToSignup} />
       <HowItWorks />
-      <ScreenshotsSection />
       <BenefitsSection />
+      <SecuritySection />
+      <ScreenshotsSection />
+      <PricingSection />
       <EmailCaptureForm />
       <Footer />
     </main>

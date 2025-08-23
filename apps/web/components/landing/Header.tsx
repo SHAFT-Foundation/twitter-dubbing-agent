@@ -21,15 +21,18 @@ export function Header() {
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="/#how-it-works" className="text-gray-400 hover:text-white transition-colors">
+            <a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors">
               How it Works
-            </Link>
-            <Link href="/#benefits" className="text-gray-400 hover:text-white transition-colors">
+            </a>
+            <a href="#features" className="text-gray-400 hover:text-white transition-colors">
               Features
-            </Link>
-            <Link href="/#pricing" className="text-gray-400 hover:text-white transition-colors">
+            </a>
+            <a href="#security" className="text-gray-400 hover:text-white transition-colors">
+              Security
+            </a>
+            <a href="#pricing" className="text-gray-400 hover:text-white transition-colors">
               Pricing
-            </Link>
+            </a>
           </nav>
 
           {/* CTA */}
