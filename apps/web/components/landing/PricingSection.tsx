@@ -9,7 +9,7 @@ const plans = [
     price: '$0',
     description: 'Perfect for trying out X Dub',
     features: [
-      '3 dubs per month',
+      '30 minutes per month',
       'Up to 5 languages',
       'Manual review mode',
       'Basic analytics',
@@ -23,30 +23,30 @@ const plans = [
     price: '$29.99',
     description: 'For active content creators',
     features: [
-      '10 dubs per month',
+      '43 minutes included',
+      '$0.85 per additional minute',
       'Up to 10 languages',
       'Auto-reply mode',
-      'Advanced analytics',
       'Priority support',
-      'Custom templates',
+      'Advanced analytics',
     ],
     cta: 'Get Started',
     highlighted: true,
   },
   {
-    name: 'Pro',
-    price: '$99.99',
-    description: 'For serious influencers',
+    name: 'Custom',
+    price: 'Contact',
+    description: 'For teams and enterprises',
     features: [
-      '50 dubs per month',
+      'Volume discounts',
       'All 30 languages',
-      'All publishing modes',
-      'Real-time analytics',
       'API access',
       'Dedicated support',
       'Team collaboration',
+      'Custom integrations',
+      'SLA guarantee',
     ],
-    cta: 'Go Pro',
+    cta: 'Contact Sales',
     highlighted: false,
   },
 ]
@@ -64,7 +64,7 @@ export function PricingSection() {
             Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Plan</span>
           </h2>
           <p className="mt-4 text-lg text-gray-400">
-            Start free, upgrade when you need more dubs
+            Pay per minute of dubbing. Start with 30 free minutes.
           </p>
         </div>
 

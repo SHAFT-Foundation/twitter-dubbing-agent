@@ -8,10 +8,10 @@ export default function DashboardPage() {
   const { user } = useAuth()
 
   const stats = [
-    { label: 'Videos Dubbed', value: '0', icon: Video, color: 'from-purple-500 to-pink-500' },
+    { label: 'Minutes Used', value: '0', icon: Video, color: 'from-purple-500 to-pink-500' },
     { label: 'Languages Active', value: '0', icon: Languages, color: 'from-blue-500 to-purple-500' },
     { label: 'Total Views', value: '0', icon: TrendingUp, color: 'from-pink-500 to-orange-500' },
-    { label: 'Dubs Remaining', value: '3', icon: Sparkles, color: 'from-green-500 to-teal-500' },
+    { label: 'Minutes Remaining', value: '30', icon: Sparkles, color: 'from-green-500 to-teal-500' },
   ]
 
   return (
