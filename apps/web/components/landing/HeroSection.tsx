@@ -30,7 +30,7 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-400 ring-1 ring-blue-500/20">
               <Zap className="h-3 w-3" />
-              20+ Languages
+              30 Languages
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400 ring-1 ring-green-500/20">
               <Globe className="h-3 w-3" />
@@ -50,7 +50,7 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
           </h1>
           
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            Auto-dub your X videos and Spaces into 20+ languages.
+            Auto-dub your X videos and Spaces into 30 languages.
             <br />
             <span className="text-sm text-green-400">NEW: AI-powered Space summaries in every language!</span>
             <br />

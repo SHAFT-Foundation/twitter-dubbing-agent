@@ -14,7 +14,7 @@ const steps = [
   {
     number: "2",
     title: "Pick Your Languages",
-    description: "Select from 20+ languages. Target specific crypto communities - Japanese DeFi, Chinese NFTs, Spanish traders.",
+    description: "Select from 30 languages. Target specific crypto communities - Japanese DeFi, Chinese NFTs, Spanish traders.",
     icon: Languages,
     color: "from-blue-500 to-purple-500",
     emoji: "🌍",

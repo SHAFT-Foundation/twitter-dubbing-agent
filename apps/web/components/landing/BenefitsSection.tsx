@@ -7,7 +7,7 @@ const benefits = [
     title: "10x Your Reach",
     description: "Tap into Asian crypto markets, European DeFi communities, and LATAM NFT collectors instantly.",
     icon: Globe2,
-    stat: "20+ Languages",
+    stat: "30 Languages",
     gradient: "from-purple-500 to-pink-500",
   },
   {
@@ -50,9 +50,9 @@ const benefits = [
 
 const stats = [
   { value: "65", label: "Crypto KOLs", emoji: "🚀" },
-  { value: "1M+", label: "Videos Dubbed", emoji: "🎬" },
-  { value: "20+", label: "Languages", emoji: "🌍" },
-  { value: "5min", label: "Avg Dub Time", emoji: "⚡" },
+  { value: "1k", label: "Videos Dubbed", emoji: "🎬" },
+  { value: "30", label: "Languages", emoji: "🌍" },
+  { value: "30min", label: "Avg Dub Time", emoji: "⚡" },
 ]
 
 export function BenefitsSection() {

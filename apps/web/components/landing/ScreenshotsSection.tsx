@@ -12,7 +12,7 @@ const screenshots = [
   },
   {
     title: "Select Your Languages",
-    description: "Choose from 20+ languages",
+    description: "Choose from 30 languages",
     placeholder: "🌍 Language Selection",
     features: ["Multi-select interface", "Region targeting", "Save preferences"],
     gradient: "from-blue-500 to-purple-500",
