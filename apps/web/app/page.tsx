@@ -1,5 +1,6 @@
 "use client"
 
+import { Header } from "@/components/landing/Header"
 import { HeroSection } from "@/components/landing/HeroSection"
 import { HowItWorks } from "@/components/landing/HowItWorks"
 import { ScreenshotsSection } from "@/components/landing/ScreenshotsSection"
@@ -17,6 +18,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-black">
+      <Header />
       <HeroSection onGetStarted={scrollToSignup} />
       <HowItWorks />
       <ScreenshotsSection />
