@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { Loader2, CheckCircle, AlertCircle } from "lucide-react"
+import { Loader2, CheckCircle, AlertCircle, Sparkles, Rocket } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const formSchema = z.object({
@@ -80,15 +80,20 @@ export function EmailCaptureForm() {
   }
 
   return (
-    <section id="signup" className="bg-gray-50 py-16 sm:py-24">
+    <section id="signup" className="bg-black py-16 sm:py-24 border-t border-gray-800">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Get Early Access
+          <div className="inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-4 py-2 text-sm font-medium text-purple-400 ring-1 ring-purple-500/20 mb-4">
+            <Rocket className="h-4 w-4" />
+            Limited Spots Available
+          </div>
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Join the <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Allowlist</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            Be among the first to automatically dub your content into multiple languages. 
-            Limited spots available.
+          <p className="mt-4 text-lg text-gray-400">
+            Be among the first crypto KOLs to go global with AI dubbing.
+            <br />
+            <span className="text-sm">Only 100 early access spots remaining</span>
           </p>
         </div>
 
@@ -106,7 +111,7 @@ export function EmailCaptureForm() {
               autoComplete="off"
             />
             
-            <div>
+            <div className="relative">
               <label htmlFor="email" className="sr-only">
                 Email address
               </label>
@@ -117,17 +122,17 @@ export function EmailCaptureForm() {
                 required
                 {...register("email")}
                 className={cn(
-                  "block w-full rounded-lg border-0 px-4 py-3",
-                  "text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300",
-                  "placeholder:text-gray-400",
-                  "focus:ring-2 focus:ring-inset focus:ring-blue-600",
-                  "sm:text-sm sm:leading-6",
-                  errors.email && "ring-red-500 focus:ring-red-500"
+                  "block w-full rounded-lg border bg-gray-900/50 backdrop-blur-sm px-4 py-4",
+                  "text-white placeholder:text-gray-500",
+                  "border-gray-800 focus:border-purple-500",
+                  "focus:ring-2 focus:ring-purple-500/20 focus:outline-none",
+                  "transition-all duration-200",
+                  errors.email && "border-red-500 focus:border-red-500 focus:ring-red-500/20"
                 )}
-                placeholder="Enter your email"
+                placeholder="Enter your email for early access"
               />
               {errors.email && (
-                <p className="mt-2 text-sm text-red-600">
+                <p className="mt-2 text-sm text-red-400">
                   {errors.email.message}
                 </p>
               )}
@@ -137,42 +142,45 @@ export function EmailCaptureForm() {
               type="submit"
               disabled={isSubmitting || submitStatus === 'success'}
               className={cn(
-                "flex w-full justify-center rounded-lg px-4 py-3",
-                "text-sm font-semibold leading-6 text-white shadow-sm",
-                "bg-gradient-to-r from-blue-600 to-purple-600",
-                "hover:from-blue-700 hover:to-purple-700",
-                "focus-visible:outline focus-visible:outline-2",
-                "focus-visible:outline-offset-2 focus-visible:outline-blue-600",
-                "disabled:opacity-50 disabled:cursor-not-allowed",
-                "transition-all duration-200"
+                "group relative flex w-full justify-center rounded-lg px-4 py-4",
+                "text-base font-semibold text-white",
+                "bg-gradient-to-r from-purple-600 to-pink-600",
+                "shadow-[0_0_40px_rgba(168,85,247,0.4)]",
+                "hover:shadow-[0_0_60px_rgba(168,85,247,0.6)]",
+                "hover:scale-[1.02] transition-all duration-300",
+                "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               )}
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Signing up...
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Securing your spot...
                 </>
               ) : submitStatus === 'success' ? (
                 <>
-                  <CheckCircle className="mr-2 h-4 w-4" />
-                  You&apos;re on the list!
+                  <CheckCircle className="mr-2 h-5 w-5" />
+                  You&apos;re on the list! 🎉
                 </>
               ) : (
-                'Get Early Access'
+                <>
+                  <Sparkles className="mr-2 h-5 w-5" />
+                  Claim Early Access
+                  <span className="ml-2 text-purple-200">→</span>
+                </>
               )}
             </button>
           </div>
 
           {submitStatus === 'success' && (
-            <div className="mt-4 rounded-lg bg-green-50 p-4">
+            <div className="mt-6 rounded-lg border border-green-500/20 bg-green-500/10 p-4 backdrop-blur-sm">
               <div className="flex">
                 <CheckCircle className="h-5 w-5 text-green-400" />
                 <div className="ml-3">
-                  <p className="text-sm font-medium text-green-800">
-                    Success! We&apos;ll be in touch soon.
+                  <p className="text-sm font-medium text-green-400">
+                    Welcome to the future of content dubbing!
                   </p>
-                  <p className="mt-1 text-sm text-green-700">
-                    Check your email for confirmation and updates.
+                  <p className="mt-1 text-sm text-green-300/80">
+                    Check your email for exclusive updates and launch details.
                   </p>
                 </div>
               </div>
@@ -180,11 +188,11 @@ export function EmailCaptureForm() {
           )}
 
           {submitStatus === 'error' && (
-            <div className="mt-4 rounded-lg bg-red-50 p-4">
+            <div className="mt-6 rounded-lg border border-red-500/20 bg-red-500/10 p-4 backdrop-blur-sm">
               <div className="flex">
                 <AlertCircle className="h-5 w-5 text-red-400" />
                 <div className="ml-3">
-                  <p className="text-sm font-medium text-red-800">
+                  <p className="text-sm font-medium text-red-400">
                     {errorMessage}
                   </p>
                 </div>
@@ -192,10 +200,22 @@ export function EmailCaptureForm() {
             </div>
           )}
 
-          <p className="mt-4 text-center text-xs text-gray-500">
-            We respect your privacy. Unsubscribe at any time.
-          </p>
+          <div className="mt-6 text-center">
+            <p className="text-xs text-gray-500">
+              🔒 We respect your privacy. No spam, unsubscribe anytime.
+            </p>
+          </div>
         </form>
+
+        {/* Progress bar */}
+        <div className="mx-auto mt-8 max-w-md">
+          <div className="rounded-full bg-gray-800 p-1">
+            <div className="h-2 w-[65%] rounded-full bg-gradient-to-r from-purple-600 to-pink-600 animate-pulse"></div>
+          </div>
+          <p className="mt-2 text-center text-xs text-gray-500">
+            65 of 100 spots claimed
+          </p>
+        </div>
       </div>
     </section>
   )

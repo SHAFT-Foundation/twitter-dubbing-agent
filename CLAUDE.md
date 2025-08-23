@@ -3,10 +3,11 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
-**Claude Code** - A Twitter (X) dubbing automation platform that enables influencers to automatically dub their videos, clips, recorded Spaces, and post-event livestreams into multiple languages, then publish replies/posts linking the localized media to grow reach and engagement.
+**X Dub** - An X (formerly Twitter) dubbing automation platform that enables influencers to automatically dub their videos, clips, recorded Spaces, and post-event livestreams into multiple languages, then publish replies/posts linking the localized media to grow reach and engagement.
 
 ### Key Capabilities
 - **Auto-dubbing**: Automatic detection and dubbing of new X content into 20+ languages
+- **X Space Summaries**: AI-generated summaries of Spaces posted in multiple languages (optional feature)
 - **Zero-friction**: Connect X account, select languages, and let the agent handle everything
 - **Smart Publishing**: Auto-reply or create new posts with dubbed content
 - **Freemium Model**: 3 free dubs/month, then $29.99 for 10 dubs/month
@@ -325,8 +326,8 @@ GET /jobs/:jobId
 
 ```bash
 # App
-NEXT_PUBLIC_APP_URL=https://app.claudecode.com
-NEXT_PUBLIC_APP_NAME="Claude Code"
+NEXT_PUBLIC_APP_URL=https://xdub.app
+NEXT_PUBLIC_APP_NAME="X Dub"
 
 # Supabase
 SUPABASE_URL=

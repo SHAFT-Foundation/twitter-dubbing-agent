@@ -1,9 +1,10 @@
 "use client"
 
 import { HeroSection } from "@/components/landing/HeroSection"
-import { EmailCaptureForm } from "@/components/landing/EmailCaptureForm"
 import { HowItWorks } from "@/components/landing/HowItWorks"
+import { ScreenshotsSection } from "@/components/landing/ScreenshotsSection"
 import { BenefitsSection } from "@/components/landing/BenefitsSection"
+import { EmailCaptureForm } from "@/components/landing/EmailCaptureForm"
 import { Footer } from "@/components/landing/Footer"
 
 export default function Home() {
@@ -15,9 +16,10 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-black">
       <HeroSection onGetStarted={scrollToSignup} />
       <HowItWorks />
+      <ScreenshotsSection />
       <BenefitsSection />
       <EmailCaptureForm />
       <Footer />
