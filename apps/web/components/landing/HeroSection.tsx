@@ -95,7 +95,7 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
           <div className="mt-8 flex justify-center gap-8 text-sm">
             <div className="flex items-center gap-2 text-gray-400">
               <span className="text-green-400">✓</span>
-              30 free minutes/month
+              10 free minutes/month
             </div>
             <div className="flex items-center gap-2 text-gray-400">
               <span className="text-green-400">✓</span>

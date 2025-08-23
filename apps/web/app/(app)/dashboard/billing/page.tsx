@@ -9,9 +9,9 @@ const plans = [
     name: 'Free',
     price: '$0',
     period: 'forever',
-    minutesPerMonth: 30,
+    minutesPerMonth: 10,
     features: [
-      '30 minutes per month',
+      '10 minutes per month',
       'Up to 5 languages',
       'Basic analytics',
       'Manual publishing',
@@ -24,10 +24,10 @@ const plans = [
     name: 'Creator',
     price: '$29.99',
     period: 'per month',
-    minutesPerMonth: 43,
+    minutesPerMonth: 60,
     additionalMinutePrice: '$0.85',
     features: [
-      '43 minutes included',
+      '60 minutes included',
       '$0.85 per additional minute',
       'Up to 10 languages',
       'Auto-publishing',
@@ -88,7 +88,7 @@ export default function BillingPage() {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-gray-400">Minutes Used</span>
-                <span className="text-sm text-white">0 / 30</span>
+                <span className="text-sm text-white">0 / 10</span>
               </div>
               <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                 <div className="h-full w-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full" />
@@ -97,7 +97,7 @@ export default function BillingPage() {
             
             <div className="flex items-center gap-2 text-sm text-green-400">
               <Sparkles className="w-4 h-4" />
-              <span>30 minutes remaining this month</span>
+              <span>10 minutes remaining this month</span>
             </div>
           </div>
         </div>

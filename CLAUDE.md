@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **X Space Summaries**: AI-generated summaries of Spaces posted in multiple languages (optional feature)
 - **Zero-friction**: Connect X account, select languages, and let the agent handle everything
 - **Smart Publishing**: Auto-reply or create new posts with dubbed content
-- **Freemium Model**: 30 free minutes/month, then $29.99 for 43 minutes/month + $0.85/additional minute
+- **Freemium Model**: 10 free minutes/month, then $29.99 for 60 minutes/month + $0.85/additional minute
 
 ## Technology Stack
 
@@ -313,7 +313,7 @@ GET /jobs/:jobId
 ```
 
 ### Stripe
-- **Products**: FREE (30 minutes), CREATOR ($29.99/43 minutes), then $0.85/min
+- **Products**: FREE (10 minutes), CREATOR ($29.99/60 minutes), then $0.85/min
 - **Webhooks**: invoice.paid, subscription.updated/deleted
 - **Usage**: Internal tracking, not Stripe metered billing
 
