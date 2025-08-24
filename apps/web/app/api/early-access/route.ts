@@ -6,10 +6,22 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { email, utm_source, utm_campaign, utm_medium } = body
 
-    // Debug: Check environment variables
+    // Debug: Check environment variables - return them in response for debugging
     const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL
     const hasServiceKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY
-    console.log('Environment check:', { hasUrl, hasServiceKey })
+    
+    // TEMPORARY DEBUG - Remove after fixing
+    if (!hasUrl || !hasServiceKey) {
+      return NextResponse.json({
+        error: 'Missing environment variables',
+        debug: {
+          hasUrl,
+          hasServiceKey,
+          url: process.env.NEXT_PUBLIC_SUPABASE_URL ? 'exists' : 'missing',
+          serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY ? 'exists' : 'missing'
+        }
+      }, { status: 500 })
+    }
 
     // Basic validation
     if (!email || !email.includes('@')) {
