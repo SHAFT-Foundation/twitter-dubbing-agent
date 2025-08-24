@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <ThemeProvider>
-      {/* Force fresh Vercel deployment - v2.3 with direct Supabase client */}
+      {/* URGENT DEPLOYMENT TEST v3.0 - NEW API + MODAL - 2024-08-24 */}
       <main className="min-h-screen bg-black">
         <InfluencerTypeModal />
         <Header />
