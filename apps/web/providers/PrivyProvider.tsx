@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 
 export function PrivyProvider({ children }: { children: React.ReactNode }) {
   const [isMounted, setIsMounted] = useState(false)
-  const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
@@ -19,15 +18,7 @@ export function PrivyProvider({ children }: { children: React.ReactNode }) {
   const appId = process.env.NEXT_PUBLIC_PRIVY_APP_ID
   
   // If no valid Privy app ID is provided, just render children without Privy
-  // This prevents console errors during development
   if (!appId || appId === 'test-privy-app-id' || appId.length < 20) {
-    console.warn('Privy provider skipped: No valid NEXT_PUBLIC_PRIVY_APP_ID found')
-    return <>{children}</>
-  }
-
-  // If there was an error, just render children without Privy
-  if (hasError) {
-    console.warn('Privy provider error occurred, rendering without Privy')
     return <>{children}</>
   }
 
@@ -38,7 +29,7 @@ export function PrivyProvider({ children }: { children: React.ReactNode }) {
         config={{
           appearance: {
             theme: 'dark',
-            accentColor: '#a855f7', // Purple to match our crypto theme
+            accentColor: '#a855f7',
             logo: '/logo.png',
             showWalletLoginFirst: false,
           },
@@ -52,7 +43,6 @@ export function PrivyProvider({ children }: { children: React.ReactNode }) {
       </Provider>
     )
   } catch (error) {
-    console.warn('Privy provider initialization failed:', error)
     return <>{children}</>
   }
 }

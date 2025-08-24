@@ -6,15 +6,8 @@ import { cn } from '@/lib/utils'
 
 export function InfluencerTypeModal() {
   const { showModal, setInfluencerType, setShowModal } = useTheme()
-  
-  console.log('InfluencerTypeModal: showModal =', showModal)
 
-  if (!showModal) {
-    console.log('InfluencerTypeModal: Not showing modal (showModal is false)')
-    return null
-  }
-  
-  console.log('InfluencerTypeModal: Rendering modal!')
+  if (!showModal) return null
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">

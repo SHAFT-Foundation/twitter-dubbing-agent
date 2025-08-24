@@ -32,7 +32,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   useEffect(() => {
     try {
-      console.log('ThemeProvider: Mounting and checking localStorage...')
       setMounted(true)
       
       // Safely check localStorage
@@ -40,19 +39,15 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       try {
         stored = localStorage.getItem('influencerType') as InfluencerType | null
       } catch (e) {
-        console.warn('ThemeProvider: localStorage access failed:', e)
+        // localStorage access failed, continue with null
       }
       
-      console.log('ThemeProvider: Stored influencer type:', stored)
       if (stored && (stored === 'crypto' || stored === 'professional')) {
-        console.log('ThemeProvider: Using stored type:', stored)
         setInfluencerTypeState(stored)
       } else {
-        console.log('ThemeProvider: No valid stored type, showing modal')
         setShowModal(true)
       }
     } catch (error) {
-      console.error('ThemeProvider: Error during initialization:', error)
       // Fallback: show modal on any error
       setMounted(true)
       setShowModal(true)

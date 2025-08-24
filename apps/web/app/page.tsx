@@ -22,6 +22,7 @@ export default function Home() {
 
   return (
     <ThemeProvider>
+      {/* Force fresh Vercel deployment - v2.1 */}
       <main className="min-h-screen bg-black">
         <InfluencerTypeModal />
         <Header />
