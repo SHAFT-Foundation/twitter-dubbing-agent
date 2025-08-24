@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <ThemeProvider>
-      {/* URGENT DEPLOYMENT TEST v3.0 - NEW API + MODAL - 2024-08-24 */}
+      {/* 🚨 FORCE DEPLOYMENT v4.0 - API ENDPOINTS MUST DEPLOY - 2024-08-24 17:15 🚨 */}
       <main className="min-h-screen bg-black">
         <InfluencerTypeModal />
         <Header />
