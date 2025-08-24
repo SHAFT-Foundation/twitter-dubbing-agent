@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createServiceClient } from '@/lib/supabase/server'
+import { createClient } from '@supabase/supabase-js'
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,8 +19,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Initialize Supabase client with service role
-    const supabase = await createServiceClient()
+    // Initialize Supabase client with service role (direct approach)
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
 
     // Check if email already exists
     const { data: existingEmail } = await supabase
