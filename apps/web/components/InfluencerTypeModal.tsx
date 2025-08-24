@@ -11,7 +11,13 @@ export function InfluencerTypeModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-      <div className="relative mx-4 w-full max-w-md rounded-2xl border border-gray-800 bg-gray-900 p-8 shadow-2xl">
+      <div 
+        className="relative mx-4 w-full max-w-md rounded-2xl border border-gray-800 bg-gray-900 p-8 shadow-2xl"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        data-testid="influencer-type-modal"
+      >
         <button
           onClick={() => setShowModal(false)}
           className="absolute right-4 top-4 text-gray-400 hover:text-white transition-colors"
@@ -20,7 +26,7 @@ export function InfluencerTypeModal() {
         </button>
         
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-white mb-2">
+          <h2 id="modal-title" className="text-2xl font-bold text-white mb-2">
             Welcome to X Dub! 👋
           </h2>
           <p className="text-gray-400">
@@ -31,6 +37,7 @@ export function InfluencerTypeModal() {
         <div className="space-y-4">
           <button
             onClick={() => setInfluencerType('crypto')}
+            data-testid="crypto-influencer-button"
             className={cn(
               "w-full group relative rounded-xl border-2 border-purple-500/20 bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-6",
               "hover:border-purple-500/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)] transition-all duration-300",
@@ -54,6 +61,7 @@ export function InfluencerTypeModal() {
 
           <button
             onClick={() => setInfluencerType('professional')}
+            data-testid="general-influencer-button"
             className={cn(
               "w-full group relative rounded-xl border-2 border-blue-500/20 bg-gradient-to-r from-blue-900/20 to-slate-900/20 p-6",
               "hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all duration-300",

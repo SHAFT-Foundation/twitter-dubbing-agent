@@ -15,8 +15,14 @@ export function PrivyProvider({ children }: { children: React.ReactNode }) {
     return <>{children}</>
   }
 
-  // Use a valid-looking placeholder ID for build time
-  const appId = process.env.NEXT_PUBLIC_PRIVY_APP_ID || 'clcqv1p0j000008l73kxzgb5j'
+  const appId = process.env.NEXT_PUBLIC_PRIVY_APP_ID
+  
+  // If no valid Privy app ID is provided, just render children without Privy
+  // This prevents console errors during development
+  if (!appId || appId === 'test-privy-app-id' || appId.length < 20) {
+    console.warn('Privy provider skipped: No valid NEXT_PUBLIC_PRIVY_APP_ID found')
+    return <>{children}</>
+  }
 
   return (
     <Provider
