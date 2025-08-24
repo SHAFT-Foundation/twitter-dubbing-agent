@@ -31,9 +31,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // TEMPORARY: Just return success to test endpoint
+    // DEPLOYMENT TEST: This should return immediately
     return NextResponse.json({
-      message: 'API endpoint working',
+      message: 'DEPLOYMENT TEST WORKING v2.4',
+      timestamp: new Date().toISOString(),
       receivedEmail: email,
       environmentOk: {
         url: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
