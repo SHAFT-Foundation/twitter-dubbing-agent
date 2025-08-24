@@ -31,11 +31,15 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    console.log('ThemeProvider: Mounting and checking localStorage...')
     setMounted(true)
     const stored = localStorage.getItem('influencerType') as InfluencerType | null
+    console.log('ThemeProvider: Stored influencer type:', stored)
     if (stored && (stored === 'crypto' || stored === 'professional')) {
+      console.log('ThemeProvider: Using stored type:', stored)
       setInfluencerTypeState(stored)
     } else {
+      console.log('ThemeProvider: No valid stored type, showing modal')
       setShowModal(true)
     }
   }, [])
