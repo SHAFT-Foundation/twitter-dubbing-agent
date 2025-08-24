@@ -9,6 +9,8 @@ import { SecuritySection } from "@/components/landing/SecuritySection"
 import { PricingSection } from "@/components/landing/PricingSection"
 import { EmailCaptureForm } from "@/components/landing/EmailCaptureForm"
 import { Footer } from "@/components/landing/Footer"
+import { ThemeProvider } from "@/providers/ThemeProvider"
+import { InfluencerTypeModal } from "@/components/InfluencerTypeModal"
 
 export default function Home() {
   const scrollToSignup = () => {
@@ -19,16 +21,19 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-black">
-      <Header />
-      <HeroSection onGetStarted={scrollToSignup} />
-      <HowItWorks />
-      <BenefitsSection />
-      <SecuritySection />
-      <ScreenshotsSection />
-      <PricingSection />
-      <EmailCaptureForm />
-      <Footer />
-    </main>
+    <ThemeProvider>
+      <main className="min-h-screen bg-black">
+        <InfluencerTypeModal />
+        <Header />
+        <HeroSection onGetStarted={scrollToSignup} />
+        <HowItWorks />
+        <BenefitsSection />
+        <SecuritySection />
+        <ScreenshotsSection />
+        <PricingSection />
+        <EmailCaptureForm />
+        <Footer />
+      </main>
+    </ThemeProvider>
   )
 }

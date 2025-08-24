@@ -2,37 +2,81 @@
 
 import { ArrowRight, Globe, Mic, Video, Sparkles, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useTheme } from "@/providers/ThemeProvider"
 
 interface HeroSectionProps {
   onGetStarted: () => void
 }
 
 export function HeroSection({ onGetStarted }: HeroSectionProps) {
+  const { influencerType } = useTheme()
+  const isProfessional = influencerType === 'professional'
+  
+  const theme = isProfessional ? {
+    gradientFrom: 'from-blue-900/20 via-black to-slate-900/20',
+    orbColor1: 'bg-blue-600',
+    orbColor2: 'bg-slate-600', 
+    orbColor3: 'bg-indigo-600',
+    badgeColors: {
+      ai: 'bg-blue-500/10 text-blue-400 ring-blue-500/20',
+      languages: 'bg-slate-500/10 text-slate-400 ring-slate-500/20',
+      reach: 'bg-green-500/10 text-green-400 ring-green-500/20'
+    },
+    textGradient: 'from-blue-400 via-slate-400 to-indigo-400',
+    textGradient2: 'from-indigo-400 via-blue-400 to-slate-400',
+    taglineGradient: 'from-blue-400 to-slate-400',
+    buttonGradient: 'from-blue-600 to-slate-600',
+    buttonShadow: 'shadow-[0_0_40px_rgba(59,130,246,0.5)] hover:shadow-[0_0_60px_rgba(59,130,246,0.7)]'
+  } : {
+    gradientFrom: 'from-purple-900/20 via-black to-blue-900/20',
+    orbColor1: 'bg-purple-600',
+    orbColor2: 'bg-blue-600',
+    orbColor3: 'bg-pink-600',
+    badgeColors: {
+      ai: 'bg-purple-500/10 text-purple-400 ring-purple-500/20',
+      languages: 'bg-blue-500/10 text-blue-400 ring-blue-500/20',
+      reach: 'bg-green-500/10 text-green-400 ring-green-500/20'
+    },
+    textGradient: 'from-purple-400 via-pink-400 to-blue-400',
+    textGradient2: 'from-blue-400 via-purple-400 to-pink-400',
+    taglineGradient: 'from-purple-400 to-pink-400',
+    buttonGradient: 'from-purple-600 to-pink-600',
+    buttonShadow: 'shadow-[0_0_40px_rgba(168,85,247,0.5)] hover:shadow-[0_0_60px_rgba(168,85,247,0.7)]'
+  }
+
+  const content = isProfessional ? {
+    tagline: 'Expand your global reach. Build your brand. 🚀',
+    trustText: 'Trusted by 65+ Influencers'
+  } : {
+    tagline: 'Go global. Stay degen. 🚀',
+    trustText: 'Trusted by 65 Crypto KOLs'
+  }
+
   return (
     <section className="relative overflow-hidden bg-black pt-32 pb-20 sm:pt-40 sm:pb-32">
       {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20">
+      <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradientFrom}`}>
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
       </div>
       
       {/* Floating orbs */}
-      <div className="absolute top-0 left-1/4 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-      <div className="absolute top-0 right-1/4 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-      <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+      <div className={`absolute top-0 left-1/4 w-72 h-72 ${theme.orbColor1} rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob`}></div>
+      <div className={`absolute top-0 right-1/4 w-72 h-72 ${theme.orbColor2} rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000`}></div>
+      <div className={`absolute bottom-0 left-1/2 w-72 h-72 ${theme.orbColor3} rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000`}></div>
       
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          {/* Crypto badges */}
+          {/* Feature badges */}
           <div className="mb-8 flex justify-center gap-3">
-            <span className="inline-flex items-center gap-1 rounded-full bg-purple-500/10 px-3 py-1 text-xs font-medium text-purple-400 ring-1 ring-purple-500/20">
+            <span className={`inline-flex items-center gap-1 rounded-full ${theme.badgeColors.ai} px-3 py-1 text-xs font-medium ring-1`}>
               <Sparkles className="h-3 w-3" />
               AI Powered
             </span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-400 ring-1 ring-blue-500/20">
+            <span className={`inline-flex items-center gap-1 rounded-full ${theme.badgeColors.languages} px-3 py-1 text-xs font-medium ring-1`}>
               <Zap className="h-3 w-3" />
               30 Languages
             </span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400 ring-1 ring-green-500/20">
+            <span className={`inline-flex items-center gap-1 rounded-full ${theme.badgeColors.reach} px-3 py-1 text-xs font-medium ring-1`}>
               <Globe className="h-3 w-3" />
               Global Reach
             </span>
@@ -40,11 +84,11 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
           
           <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
             <span className="text-white">Dub your </span>
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent animate-gradient">
+            <span className={`bg-gradient-to-r ${theme.textGradient} bg-clip-text text-transparent animate-gradient`}>
               videos
             </span>
             <span className="text-white"> into </span>
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient animation-delay-2000">
+            <span className={`bg-gradient-to-r ${theme.textGradient2} bg-clip-text text-transparent animate-gradient animation-delay-2000`}>
               every language
             </span>
           </h1>
@@ -54,8 +98,8 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
             <br />
             <span className="text-sm text-green-400">NEW: AI-powered Space summaries in every language!</span>
             <br />
-            <span className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-              Go global. Stay degen. 🚀
+            <span className={`text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r ${theme.taglineGradient}`}>
+              {content.tagline}
             </span>
           </p>
           
@@ -78,10 +122,9 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
               onClick={onGetStarted}
               className={cn(
                 "group relative rounded-full px-8 py-4",
-                "bg-gradient-to-r from-purple-600 to-pink-600",
+                `bg-gradient-to-r ${theme.buttonGradient}`,
                 "text-base font-semibold text-white",
-                "shadow-[0_0_40px_rgba(168,85,247,0.5)]",
-                "hover:shadow-[0_0_60px_rgba(168,85,247,0.7)]",
+                theme.buttonShadow,
                 "hover:scale-105 transition-all duration-300",
                 "flex items-center gap-2"
               )}
@@ -110,7 +153,7 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
           {/* Social proof */}
           <div className="mt-12 text-center">
             <p className="text-sm text-gray-400">
-              Trusted by 65 Crypto KOLs
+              {content.trustText}
             </p>
             <div className="mt-3 flex justify-center gap-4 opacity-50">
               <Video className="h-5 w-5 text-gray-500" />
