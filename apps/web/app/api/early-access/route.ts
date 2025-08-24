@@ -6,6 +6,11 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { email, utm_source, utm_campaign, utm_medium } = body
 
+    // Debug: Check environment variables
+    const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL
+    const hasServiceKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY
+    console.log('Environment check:', { hasUrl, hasServiceKey })
+
     // Basic validation
     if (!email || !email.includes('@')) {
       return NextResponse.json(
@@ -46,7 +51,15 @@ export async function POST(request: NextRequest) {
     if (error) {
       console.error('Supabase error:', error)
       return NextResponse.json(
-        { error: 'Failed to add email to waitlist' },
+        { 
+          error: 'Failed to add email to waitlist',
+          details: {
+            message: error.message,
+            code: error.code,
+            hint: error.hint,
+            details: error.details
+          }
+        },
         { status: 500 }
       )
     }
