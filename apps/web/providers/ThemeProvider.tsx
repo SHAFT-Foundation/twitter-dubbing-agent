@@ -28,8 +28,10 @@ interface ThemeProviderProps {
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [influencerType, setInfluencerTypeState] = useState<InfluencerType | null>(null)
   const [showModal, setShowModal] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const stored = localStorage.getItem('influencerType') as InfluencerType | null
     if (stored && (stored === 'crypto' || stored === 'professional')) {
       setInfluencerTypeState(stored)
@@ -37,6 +39,20 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       setShowModal(true)
     }
   }, [])
+
+  // Don't render the modal until after hydration
+  if (!mounted) {
+    return (
+      <ThemeContext.Provider value={{
+        influencerType: null,
+        setInfluencerType: () => {},
+        showModal: false,
+        setShowModal: () => {}
+      }}>
+        {children}
+      </ThemeContext.Provider>
+    )
+  }
 
   const setInfluencerType = (type: InfluencerType) => {
     setInfluencerTypeState(type)
