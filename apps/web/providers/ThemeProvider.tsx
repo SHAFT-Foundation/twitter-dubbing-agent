@@ -31,15 +31,30 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    console.log('ThemeProvider: Mounting and checking localStorage...')
-    setMounted(true)
-    const stored = localStorage.getItem('influencerType') as InfluencerType | null
-    console.log('ThemeProvider: Stored influencer type:', stored)
-    if (stored && (stored === 'crypto' || stored === 'professional')) {
-      console.log('ThemeProvider: Using stored type:', stored)
-      setInfluencerTypeState(stored)
-    } else {
-      console.log('ThemeProvider: No valid stored type, showing modal')
+    try {
+      console.log('ThemeProvider: Mounting and checking localStorage...')
+      setMounted(true)
+      
+      // Safely check localStorage
+      let stored: InfluencerType | null = null
+      try {
+        stored = localStorage.getItem('influencerType') as InfluencerType | null
+      } catch (e) {
+        console.warn('ThemeProvider: localStorage access failed:', e)
+      }
+      
+      console.log('ThemeProvider: Stored influencer type:', stored)
+      if (stored && (stored === 'crypto' || stored === 'professional')) {
+        console.log('ThemeProvider: Using stored type:', stored)
+        setInfluencerTypeState(stored)
+      } else {
+        console.log('ThemeProvider: No valid stored type, showing modal')
+        setShowModal(true)
+      }
+    } catch (error) {
+      console.error('ThemeProvider: Error during initialization:', error)
+      // Fallback: show modal on any error
+      setMounted(true)
       setShowModal(true)
     }
   }, [])

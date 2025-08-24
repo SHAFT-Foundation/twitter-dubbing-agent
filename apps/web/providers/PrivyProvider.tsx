@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 
 export function PrivyProvider({ children }: { children: React.ReactNode }) {
   const [isMounted, setIsMounted] = useState(false)
+  const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
@@ -24,23 +25,34 @@ export function PrivyProvider({ children }: { children: React.ReactNode }) {
     return <>{children}</>
   }
 
-  return (
-    <Provider
-      appId={appId}
-      config={{
-        appearance: {
-          theme: 'dark',
-          accentColor: '#a855f7', // Purple to match our crypto theme
-          logo: '/logo.png',
-          showWalletLoginFirst: false,
-        },
-        loginMethods: ['email', 'google', 'github', 'twitter'],
-        embeddedWallets: {
-          createOnLogin: 'users-without-wallets',
-        },
-      }}
-    >
-      {children}
-    </Provider>
-  )
+  // If there was an error, just render children without Privy
+  if (hasError) {
+    console.warn('Privy provider error occurred, rendering without Privy')
+    return <>{children}</>
+  }
+
+  try {
+    return (
+      <Provider
+        appId={appId}
+        config={{
+          appearance: {
+            theme: 'dark',
+            accentColor: '#a855f7', // Purple to match our crypto theme
+            logo: '/logo.png',
+            showWalletLoginFirst: false,
+          },
+          loginMethods: ['email', 'google', 'github', 'twitter'],
+          embeddedWallets: {
+            createOnLogin: 'users-without-wallets',
+          },
+        }}
+      >
+        {children}
+      </Provider>
+    )
+  } catch (error) {
+    console.warn('Privy provider initialization failed:', error)
+    return <>{children}</>
+  }
 }
