@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { email, utm_source, utm_campaign, utm_medium } = body
+    const { email } = body
 
     // Debug: Check environment variables - return them in response for debugging
     const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL

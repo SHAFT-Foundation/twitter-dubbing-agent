@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { createServiceClient } from '@/lib/supabase/server'
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Test environment variables
     const envCheck = {
@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
     const supabase = await createServiceClient()
     
     // Try a simple query to test connection
-    const { data, error, count } = await supabase
+    const { error, count } = await supabase
       .from('early_access')
       .select('*', { count: 'exact', head: true })
     
