@@ -41,15 +41,15 @@ export async function POST(request: NextRequest) {
         serviceKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY
       }
     }, { status: 200 })
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('API error:', error)
     return NextResponse.json(
       { 
         error: 'Internal server error',
         details: {
-          message: error.message,
-          stack: error.stack,
-          name: error.name
+          message: error instanceof Error ? error.message : 'Unknown error',
+          stack: error instanceof Error ? error.stack : undefined,
+          name: error instanceof Error ? error.name : 'UnknownError'
         }
       },
       { status: 500 }

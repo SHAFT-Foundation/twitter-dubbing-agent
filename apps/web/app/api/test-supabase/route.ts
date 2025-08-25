@@ -37,11 +37,11 @@ export async function GET(request: NextRequest) {
       message: 'Supabase connection working!'
     })
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json({
       connection: 'failed',
-      error: error.message,
-      stack: error.stack
+      error: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined
     }, { status: 500 })
   }
 }
