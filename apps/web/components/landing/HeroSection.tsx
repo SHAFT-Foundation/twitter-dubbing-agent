@@ -3,6 +3,7 @@
 import { ArrowRight, Globe, Mic, Video, Sparkles, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTheme } from "@/providers/ThemeProvider"
+import { PoweredBySpeechLab } from "./PoweredBySpeechLab"
 
 interface HeroSectionProps {
   onGetStarted: () => void
@@ -151,7 +152,7 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
           </div>
           
           {/* Social proof */}
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center space-y-4">
             <p className="text-sm text-gray-400">
               {content.trustText}
             </p>
@@ -159,6 +160,9 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
               <Video className="h-5 w-5 text-gray-500" />
               <Mic className="h-5 w-5 text-gray-500" />
               <Globe className="h-5 w-5 text-gray-500" />
+            </div>
+            <div className="pt-4">
+              <PoweredBySpeechLab variant="dark" size="md" />
             </div>
           </div>
         </div>

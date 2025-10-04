@@ -1,6 +1,7 @@
 "use client"
 
 import { Twitter, Linkedin, Youtube, MessageCircle, Mail } from "lucide-react"
+import { PoweredBySpeechLab } from "./PoweredBySpeechLab"
 
 export function Footer() {
   return (
@@ -17,14 +18,17 @@ export function Footer() {
             <p className="text-sm text-gray-400">
               Proud partner of the DAIAA
             </p>
-            <a 
-              href="https://www.daiaa.org/" 
+            <a
+              href="https://www.daiaa.org/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-purple-400 hover:text-purple-300 transition-colors"
             >
               Learn more at daiaa.org →
             </a>
+            <div className="mt-4">
+              <PoweredBySpeechLab variant="dark" size="md" />
+            </div>
           </div>
 
           {/* Contact Info */}

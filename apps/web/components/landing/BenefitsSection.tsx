@@ -2,6 +2,8 @@
 
 import { TrendingUp, Users, Clock, Shield, Globe2, Sparkles, Coins, Rocket, FileText } from "lucide-react"
 import { useTheme } from "@/providers/ThemeProvider"
+import { InlineSignupCTA } from "./InlineSignupCTA"
+import { PoweredBySpeechLab } from "./PoweredBySpeechLab"
 
 const getBenefits = (isProfessional: boolean) => [
   {
@@ -198,6 +200,24 @@ export function BenefitsSection() {
             </div>
             <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
               <Rocket className="h-8 w-8" />
+            </div>
+          </div>
+        </div>
+
+        {/* Inline Signup CTA */}
+        <div className="mx-auto mt-16 max-w-4xl">
+          <div className="rounded-2xl border border-purple-500/20 bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-8 backdrop-blur-sm">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-white mb-2">
+                Ready to Go Global?
+              </h3>
+              <p className="text-gray-400">
+                Join 65+ influencers already expanding their reach with AI dubbing
+              </p>
+            </div>
+            <InlineSignupCTA variant="full" showDescription={false} />
+            <div className="mt-6 flex justify-center">
+              <PoweredBySpeechLab variant="dark" size="sm" />
             </div>
           </div>
         </div>
