@@ -96,7 +96,11 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
           
           <p className="mt-6 text-lg leading-8 text-gray-300">
             Auto-dub your X videos and Spaces into 30 languages.
-            <br />
+          </p>
+          <div className="mt-3 flex justify-center">
+            <PoweredBySpeechLab variant="dark" size="sm" />
+          </div>
+          <p className="mt-4 text-lg leading-8 text-gray-300">
             <span className="text-sm text-green-400">NEW: AI-powered Space summaries in every language!</span>
             <br />
             <span className={`text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r ${theme.taglineGradient}`}>
