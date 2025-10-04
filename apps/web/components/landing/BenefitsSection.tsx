@@ -43,7 +43,7 @@ const getBenefits = (isProfessional: boolean) => [
   },
   {
     title: "Keep Your Voice",
-    description: "Advanced AI preserves your tone, style, and personality across all languages.",
+    description: "Voice cloning technology preserves your authentic tone, style, and personality with natural-sounding multilingual voice-over for social media.",
     icon: Sparkles,
     stat: "Voice Cloning",
     gradient: isProfessional ? "from-slate-500 to-gray-500" : "from-pink-500 to-red-500",

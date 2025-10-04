@@ -117,6 +117,21 @@ export function Footer() {
           </div>
         </div>
 
+        {/* SEO Content Section - Visible to Search Engines */}
+        <div className="mt-8 border-t border-gray-800 pt-8">
+          <div className="max-w-4xl mx-auto text-center space-y-4">
+            <h3 className="text-sm font-semibold text-gray-600">
+              AI Video Dubbing Platform for Content Creators
+            </h3>
+            <p className="text-xs text-gray-700 leading-relaxed">
+              X Dub is the leading social media dubbing service offering AI video dubbing, multilingual video dubbing,
+              and automatic video localization for influencers. Our voice cloning technology delivers natural lip-sync dubbing
+              with AI voice-over translation across 30+ languages. Transform your content with our global video dubbing tool
+              designed specifically for video dubbing for influencers and multilingual voice-over for social media platforms.
+            </p>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div className="mt-8 border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">

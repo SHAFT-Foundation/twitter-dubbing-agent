@@ -22,7 +22,7 @@ const steps = [
   {
     number: "3",
     title: "AI Does the Magic",
-    description: "Our AI automatically dubs videos, generates Space summaries, and posts in multiple languages. Watch your engagement multiply.",
+    description: "Our global video dubbing tool creates multilingual voice-overs with automatic video localization. Watch your engagement multiply across every market.",
     icon: Zap,
     color: "from-pink-500 to-orange-500",
     emoji: "⚡",
@@ -39,10 +39,10 @@ export function HowItWorks() {
             How It Works
           </div>
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Three Steps to <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Global Reach</span>
+            Video Dubbing for <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Influencers</span>
           </h2>
           <p className="mt-4 text-lg text-gray-400">
-            From setup to worldwide engagement in minutes
+            Professional social media dubbing service in three simple steps
           </p>
         </div>
 

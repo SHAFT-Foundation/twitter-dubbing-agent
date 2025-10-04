@@ -84,24 +84,20 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
           </div>
           
           <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
-            <span className="text-white">Dub your </span>
+            <span className="text-white">AI Video Dubbing for </span>
             <span className={`bg-gradient-to-r ${theme.textGradient} bg-clip-text text-transparent animate-gradient`}>
-              videos
-            </span>
-            <span className="text-white"> into </span>
-            <span className={`bg-gradient-to-r ${theme.textGradient2} bg-clip-text text-transparent animate-gradient animation-delay-2000`}>
-              every language
+              Social Media
             </span>
           </h1>
-          
+
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            Auto-dub your X videos and Spaces into 30 languages.
+            Multilingual video dubbing with voice cloning technology and automatic video localization.
           </p>
           <div className="mt-3 flex justify-center">
             <PoweredBySpeechLab variant="dark" size="sm" />
           </div>
           <p className="mt-4 text-lg leading-8 text-gray-300">
-            <span className="text-sm text-green-400">NEW: AI-powered Space summaries in every language!</span>
+            <span className="text-sm text-green-400">NEW: Lip-sync dubbing with AI voice-over translation!</span>
             <br />
             <span className={`text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r ${theme.taglineGradient}`}>
               {content.tagline}
