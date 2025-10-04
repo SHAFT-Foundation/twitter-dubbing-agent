@@ -28,7 +28,7 @@ export function PoweredBySpeechLab({ variant = 'dark', size = 'md' }: PoweredByS
     >
       <span className={`${currentSize.text} font-medium`}>Powered by</span>
       <Image
-        src="/speechlablogo.png"
+        src="/speechlogowhit.png"
         alt="SpeechLab"
         width={currentSize.width}
         height={currentSize.height}
