@@ -7,6 +7,7 @@ import { ScreenshotsSection } from "@/components/landing/ScreenshotsSection"
 import { BenefitsSection } from "@/components/landing/BenefitsSection"
 import { SecuritySection } from "@/components/landing/SecuritySection"
 import { PricingSection } from "@/components/landing/PricingSection"
+import { BlogSection } from "@/components/landing/BlogSection"
 import { FAQSection } from "@/components/landing/FAQSection"
 import { EmailCaptureForm } from "@/components/landing/EmailCaptureForm"
 import { Footer } from "@/components/landing/Footer"
@@ -33,6 +34,7 @@ export default function Home() {
         <SecuritySection />
         <ScreenshotsSection />
         <PricingSection />
+        <BlogSection />
         <FAQSection />
         <EmailCaptureForm />
         <Footer />

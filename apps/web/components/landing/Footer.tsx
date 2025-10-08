@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="bg-black border-t border-gray-800">
       <div className="mx-auto max-w-7xl px-6 py-12 md:py-16 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* SHAFT Branding */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
@@ -31,12 +31,37 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Resources & Blog */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-white">Resources</h3>
+            <div className="space-y-2">
+              <a href="/blog" className="block text-sm text-gray-400 hover:text-white transition-colors">
+                Blog
+              </a>
+              <a href="/blog/what-is-ai-video-dubbing" className="block text-sm text-gray-400 hover:text-white transition-colors">
+                What is AI Video Dubbing?
+              </a>
+              <a href="/blog/voice-cloning-technology-explained" className="block text-sm text-gray-400 hover:text-white transition-colors">
+                Voice Cloning Technology
+              </a>
+              <a href="/blog/lip-sync-dubbing-guide" className="block text-sm text-gray-400 hover:text-white transition-colors">
+                Lip-Sync Dubbing Guide
+              </a>
+              <a href="/blog/multilingual-content-strategy" className="block text-sm text-gray-400 hover:text-white transition-colors">
+                Multilingual Strategy
+              </a>
+              <a href="/blog/video-dubbing-roi-case-studies" className="block text-sm text-gray-400 hover:text-white transition-colors">
+                ROI Case Studies
+              </a>
+            </div>
+          </div>
+
           {/* Contact Info */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-white">Contact</h3>
             <div className="space-y-2">
-              <a 
-                href="mailto:argos@shaft.finance" 
+              <a
+                href="mailto:argos@shaft.finance"
                 className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
               >
                 <Mail className="h-4 w-4" />
