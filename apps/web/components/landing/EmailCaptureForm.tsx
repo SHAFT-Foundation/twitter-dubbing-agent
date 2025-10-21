@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Loader2, CheckCircle, AlertCircle, Sparkles, Rocket } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { PoweredBySpeechLab } from "./PoweredBySpeechLab"
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -200,10 +201,11 @@ export function EmailCaptureForm() {
             </div>
           )}
 
-          <div className="mt-6 text-center">
+          <div className="mt-6 text-center space-y-3">
             <p className="text-xs text-gray-500">
               🔒 We respect your privacy. No spam, unsubscribe anytime.
             </p>
+            <PoweredBySpeechLab variant="dark" size="sm" />
           </div>
         </form>
 

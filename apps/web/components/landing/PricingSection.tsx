@@ -2,6 +2,8 @@
 
 import { Check, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { InlineSignupCTA } from './InlineSignupCTA'
+import { PoweredBySpeechLab } from './PoweredBySpeechLab'
 
 const plans = [
   {
@@ -119,10 +121,26 @@ export function PricingSection() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-12 text-center space-y-2">
           <p className="text-sm text-gray-400">
             All plans include our security guarantee. Cancel anytime. No hidden fees.
           </p>
+          <PoweredBySpeechLab variant="dark" size="sm" />
+        </div>
+
+        {/* CTA Section */}
+        <div className="mx-auto mt-16 max-w-2xl">
+          <div className="rounded-2xl border border-purple-500/20 bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-8 backdrop-blur-sm">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-white mb-2">
+                Start with <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">10 Free Minutes</span>
+              </h3>
+              <p className="text-gray-400">
+                No credit card required. Setup takes 2 minutes.
+              </p>
+            </div>
+            <InlineSignupCTA variant="compact" showDescription={true} />
+          </div>
         </div>
       </div>
     </section>

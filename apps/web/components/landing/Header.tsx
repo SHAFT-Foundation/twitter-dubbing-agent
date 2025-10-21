@@ -33,6 +33,9 @@ export function Header() {
             <a href="#pricing" className="text-gray-400 hover:text-white transition-colors">
               Pricing
             </a>
+            <Link href="/blog" className="text-gray-400 hover:text-white transition-colors">
+              Blog
+            </Link>
           </nav>
 
           {/* CTA */}

@@ -3,6 +3,7 @@
 import { ArrowRight, Globe, Mic, Video, Sparkles, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTheme } from "@/providers/ThemeProvider"
+import { PoweredBySpeechLab } from "./PoweredBySpeechLab"
 
 interface HeroSectionProps {
   onGetStarted: () => void
@@ -83,20 +84,20 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
           </div>
           
           <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
-            <span className="text-white">Dub your </span>
+            <span className="text-white">AI Video Dubbing for </span>
             <span className={`bg-gradient-to-r ${theme.textGradient} bg-clip-text text-transparent animate-gradient`}>
-              videos
-            </span>
-            <span className="text-white"> into </span>
-            <span className={`bg-gradient-to-r ${theme.textGradient2} bg-clip-text text-transparent animate-gradient animation-delay-2000`}>
-              every language
+              Social Media
             </span>
           </h1>
-          
+
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            Auto-dub your X videos and Spaces into 30 languages.
-            <br />
-            <span className="text-sm text-green-400">NEW: AI-powered Space summaries in every language!</span>
+            Multilingual video dubbing with voice cloning technology and automatic video localization.
+          </p>
+          <div className="mt-3 flex justify-center">
+            <PoweredBySpeechLab variant="dark" size="sm" />
+          </div>
+          <p className="mt-4 text-lg leading-8 text-gray-300">
+            <span className="text-sm text-green-400">NEW: Lip-sync dubbing with AI voice-over translation!</span>
             <br />
             <span className={`text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r ${theme.taglineGradient}`}>
               {content.tagline}
@@ -151,7 +152,7 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
           </div>
           
           {/* Social proof */}
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center space-y-4">
             <p className="text-sm text-gray-400">
               {content.trustText}
             </p>
@@ -159,6 +160,9 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
               <Video className="h-5 w-5 text-gray-500" />
               <Mic className="h-5 w-5 text-gray-500" />
               <Globe className="h-5 w-5 text-gray-500" />
+            </div>
+            <div className="pt-4">
+              <PoweredBySpeechLab variant="dark" size="md" />
             </div>
           </div>
         </div>

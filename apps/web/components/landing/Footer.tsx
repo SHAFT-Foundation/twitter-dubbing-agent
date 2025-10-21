@@ -1,12 +1,13 @@
 "use client"
 
 import { Twitter, Linkedin, Youtube, MessageCircle, Mail } from "lucide-react"
+import { PoweredBySpeechLab } from "./PoweredBySpeechLab"
 
 export function Footer() {
   return (
     <footer className="bg-black border-t border-gray-800">
       <div className="mx-auto max-w-7xl px-6 py-12 md:py-16 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* SHAFT Branding */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
@@ -17,22 +18,50 @@ export function Footer() {
             <p className="text-sm text-gray-400">
               Proud partner of the DAIAA
             </p>
-            <a 
-              href="https://www.daiaa.org/" 
+            <a
+              href="https://www.daiaa.org/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-purple-400 hover:text-purple-300 transition-colors"
             >
               Learn more at daiaa.org →
             </a>
+            <div className="mt-4">
+              <PoweredBySpeechLab variant="dark" size="md" />
+            </div>
+          </div>
+
+          {/* Resources & Blog */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-white">Resources</h3>
+            <div className="space-y-2">
+              <a href="/blog" className="block text-sm text-gray-400 hover:text-white transition-colors">
+                Blog
+              </a>
+              <a href="/blog/what-is-ai-video-dubbing" className="block text-sm text-gray-400 hover:text-white transition-colors">
+                What is AI Video Dubbing?
+              </a>
+              <a href="/blog/voice-cloning-technology-explained" className="block text-sm text-gray-400 hover:text-white transition-colors">
+                Voice Cloning Technology
+              </a>
+              <a href="/blog/lip-sync-dubbing-guide" className="block text-sm text-gray-400 hover:text-white transition-colors">
+                Lip-Sync Dubbing Guide
+              </a>
+              <a href="/blog/multilingual-content-strategy" className="block text-sm text-gray-400 hover:text-white transition-colors">
+                Multilingual Strategy
+              </a>
+              <a href="/blog/video-dubbing-roi-case-studies" className="block text-sm text-gray-400 hover:text-white transition-colors">
+                ROI Case Studies
+              </a>
+            </div>
           </div>
 
           {/* Contact Info */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-white">Contact</h3>
             <div className="space-y-2">
-              <a 
-                href="mailto:argos@shaft.finance" 
+              <a
+                href="mailto:argos@shaft.finance"
                 className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
               >
                 <Mail className="h-4 w-4" />
@@ -110,6 +139,21 @@ export function Footer() {
                 </svg>
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* SEO Content Section - Visible to Search Engines */}
+        <div className="mt-8 border-t border-gray-800 pt-8">
+          <div className="max-w-4xl mx-auto text-center space-y-4">
+            <h3 className="text-sm font-semibold text-gray-600">
+              AI Video Dubbing Platform for Content Creators
+            </h3>
+            <p className="text-xs text-gray-700 leading-relaxed">
+              X Dub is the leading social media dubbing service offering AI video dubbing, multilingual video dubbing,
+              and automatic video localization for influencers. Our voice cloning technology delivers natural lip-sync dubbing
+              with AI voice-over translation across 30+ languages. Transform your content with our global video dubbing tool
+              designed specifically for video dubbing for influencers and multilingual voice-over for social media platforms.
+            </p>
           </div>
         </div>
 
